@@ -3,3 +3,7 @@ today we studying git and create first version
 
 =============================
 이부분은 2교시때 추가 작업한 내용
+
+==============================min
+추가사항 
+real fun
