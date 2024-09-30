@@ -20,35 +20,65 @@
 
 
 <body>
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">WebSiteName</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="#">Page 1-1</a></li>
-          <li><a href="#">Page 1-2</a></li>
-          <li><a href="#">Page 1-3</a></li>
-        </ul>
-      </li>
-      <li><a href="#">Page 2</a></li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="memberinput"><span class="glyphicon glyphicon-user"></span> 회원가입</a></li>
-      <li><a href="login"><span class="glyphicon glyphicon-log-in"></span> 로그인</a></li>
-    </ul>
-  </div>
-</nav>
-  
-<div class="container">
+	<c:choose>
+		<c:when test="${loginstate==true}">
 
-</div>
+			<nav class="navbar navbar-inverse">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<a class="navbar-brand" href="#">WebSiteName</a>
+					</div>
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="#">Home</a></li>
+						<li class="dropdown"><a class="dropdown-toggle"
+							data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">Page 1-1</a></li>
+								<li><a href="#">Page 1-2</a></li>
+								<li><a href="#">Page 1-3</a></li>
+							</ul></li>
+						<li><a href="#">Page 2</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="myinfo"><span
+								class="glyphicon glyphicon-user"></span> 개인정보</a></li>
+						<li><a href="logout"><span
+								class="glyphicon glyphicon-log-in"></span> 로그아웃</a></li>
+					</ul>
+				</div>
+			</nav>
+			<div class="container"></div>
+		</c:when>
 
-
-
-
+		<c:otherwise>
+			<nav class="navbar navbar-inverse">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<a class="navbar-brand" href="#">WebSiteName</a>
+					</div>
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="#">Home</a></li>
+						<li class="dropdown"><a class="dropdown-toggle"
+							data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">Page 1-1</a></li>
+								<li><a href="#">Page 1-2</a></li>
+								<li><a href="#">Page 1-3</a></li>
+							</ul></li>
+						<li><a href="#">Page 2</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="memberinput"><span
+								class="glyphicon glyphicon-user"></span> 회원가입</a></li>
+						<li><a href="myinfo"><span
+								class="glyphicon glyphicon-user"></span> 개인정보</a></li>
+						<li><a href="login"><span
+								class="glyphicon glyphicon-log-in"></span> 로그인</a></li>
+					</ul>
+				</div>
+			</nav>
+			<div class="container"></div>
+		</c:otherwise>
+	</c:choose>
 </body>
 </html>

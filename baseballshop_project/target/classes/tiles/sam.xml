@@ -21,6 +21,36 @@
       <put-attribute name="body" value="/WEB-INF/views/member/memberinput.jsp"/>
    </definition> 
    
+   <definition name="membercongratulations" extends="baseLayout">
+      <put-attribute name="title" value="메인화면"/>
+      <put-attribute name="body" value="/WEB-INF/views/member/membercongratulations.jsp"/>
+   </definition> 
+   
+   <definition name="login" extends="baseLayout">
+      <put-attribute name="title" value="메인화면"/>
+      <put-attribute name="body" value="/WEB-INF/views/login/login.jsp"/>
+   </definition> 
+   
+    <definition name="myinfo" extends="baseLayout">
+      <put-attribute name="title" value="메인화면"/>
+      <put-attribute name="body" value="/WEB-INF/views/login/myinfo.jsp"/>
+   </definition> 
+   
+    <definition name="updateview" extends="baseLayout">
+      <put-attribute name="title" value="메인화면"/>
+      <put-attribute name="body" value="/WEB-INF/views/login/updateview.jsp"/>
+   </definition> 
+   
+    <definition name="deleteview" extends="baseLayout">
+      <put-attribute name="title" value="메인화면"/>
+      <put-attribute name="body" value="/WEB-INF/views/login/deleteview.jsp"/>
+   </definition> 
+   
+   <definition name="thanksforusing" extends="baseLayout">
+      <put-attribute name="title" value="메인화면"/>
+      <put-attribute name="body" value="/WEB-INF/views/login/thanksforusing.jsp"/>
+   </definition> 
+   
 </tiles-definitions>
 
 

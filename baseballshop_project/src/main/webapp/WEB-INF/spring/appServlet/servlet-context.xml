@@ -47,6 +47,7 @@
 			ref="sqlSessionFactory" />
 	</beans:bean>
 	<!-- 마이바티스 설정종료 -->
+	
 	<!-- 파일 업로드 시작 -->
 	<beans:bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
@@ -55,6 +56,7 @@
 		<beans:property name="defaultEncoding" value="utf-8" />
 	</beans:bean>
 	<!-- 파일 업로드 종료 -->
+	
 	<!-- 타일즈 시작 -->
 	<beans:bean id="tilesConfigurer"
 		class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
@@ -81,6 +83,7 @@
 		<beans:property name="order" value="2" />
 	</beans:bean>
 	<!-- 타일즈 종료 -->
+	
 	<context:component-scan base-package="com.mbc.team" />
 	
 	
