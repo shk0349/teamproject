@@ -18,6 +18,12 @@ public interface LoginService {
 
 	boolean delete2(String id);
 
+	LoginDTO findid(String name, String email);
+
+	LoginDTO findpw(String id, String name, String email);
+
+	void updatepw(String id, String pw);
+
 	
 
 }
