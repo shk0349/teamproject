@@ -46,7 +46,10 @@ public class MemberController {
 		String fdomain=request.getParameter("fdomain");
 		String bdomain=request.getParameter("bdomain");
 		String email=fdomain+"@"+bdomain;
-		String address=request.getParameter("address");
+		String mainaddress=request.getParameter("mainaddress");
+		String detailaddress=request.getParameter("detailaddress");
+		String extraaddress=request.getParameter("extraaddress");
+		String address=mainaddress+detailaddress+extraaddress;
 		MemberService ms=sqlSession.getMapper(MemberService.class);
 		ms.memberinput(id,nickname,pw,name,gender,birth,phone,address,email);
 		

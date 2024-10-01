@@ -19,7 +19,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 @Controller
 public class ProductController {
 	
-	String path = "C://MBC6//spring//baseballshop_project//src//main//webapp//image";
+	String path = "C:\\Users\\jin\\git\\teamproject\\baseballshop_project\\src\\main\\webapp\\image";
 
 	@Autowired
 	SqlSession sqlSession;

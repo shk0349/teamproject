@@ -51,6 +51,26 @@
       <put-attribute name="body" value="/WEB-INF/views/login/thanksforusing.jsp"/>
    </definition> 
    
+    <definition name="findmyid" extends="baseLayout">
+      <put-attribute name="title" value="메인화면"/>
+      <put-attribute name="body" value="/WEB-INF/views/login/findmyid.jsp"/>
+   </definition> 
+   
+   <definition name="confirmid" extends="baseLayout">
+      <put-attribute name="title" value="메인화면"/>
+      <put-attribute name="body" value="/WEB-INF/views/login/confirmid.jsp"/>
+   </definition> 
+   
+   <definition name="findmypw" extends="baseLayout">
+      <put-attribute name="title" value="메인화면"/>
+      <put-attribute name="body" value="/WEB-INF/views/login/findmypw.jsp"/>
+   </definition> 
+   
+   <definition name="confirmpw" extends="baseLayout">
+      <put-attribute name="title" value="메인화면"/>
+      <put-attribute name="body" value="/WEB-INF/views/login/confirmpw.jsp"/>
+   </definition> 
+   
 </tiles-definitions>
 
 

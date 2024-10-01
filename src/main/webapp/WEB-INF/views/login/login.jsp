@@ -3,6 +3,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -18,6 +20,15 @@
 	<tr>
 		<td><input type="submit" value="로그인" ></td>
 	</tr>
+</table>
+<table align="center">
+<tr>
+<th colspan="2">
+<input type="button" value="아이디 찾기" onclick="location.href='findmyid'">
+<input type="button" value="비밀번호 찾기" onclick="location.href='findmypw'">
+</th>
+</tr>
+
 </table>
 </form>
 </body>

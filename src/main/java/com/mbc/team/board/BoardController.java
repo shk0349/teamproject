@@ -21,7 +21,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 @Controller
 public class BoardController {
 
-	String savepath="C://project//teamproject//baseballshop_project//src//main//webapp//image";
+	String savepath="C:\\Users\\jin\\git\\teamproject\\baseballshop_project\\src\\main\\webapp\\image";
 	@Autowired
 	SqlSession sqlsession;
 	

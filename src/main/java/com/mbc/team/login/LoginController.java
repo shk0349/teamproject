@@ -17,6 +17,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mbc.team.member.MemberService;
@@ -45,6 +46,7 @@ public class LoginController {
 	{
 		HttpSession hs=request.getSession();
 		hs.setAttribute("loginstate", false);
+		hs.setAttribute("adminloginstate", false);
 		hs.removeAttribute("dto3");
 		return "redirect:/main";
 	}
@@ -68,18 +70,17 @@ public class LoginController {
 				hs.setAttribute("loginstate", true);
 				hs.setAttribute("dto3", dto3);
 				pww.print("<script> alert(' 로그인에 성공하였습니다...!');</script>");
-			    pww.print("<script> location.href='/main';</script>");
-			    pww.close();
+			    pww.print("<script> location.href='main';</script>");
+			    pww.flush();
 				return "redirect:/main";
 			}
-			
 			else
 			{
 				pww.print("<script> alert('비밀번호를 확인해주세요'); history.go(-1);</script>");
 				pww.flush();
 				return null;
 			}
-			}
+		}
 		else if(id.equals("admin")&&inputpw.equals("admin1234"))
 		{
 			HttpSession hs=request.getSession();
@@ -203,4 +204,57 @@ public class LoginController {
 		}
 		
 	}
+	
+	@RequestMapping(value = "/findmyid")
+	public String login10()
+	{
+		
+		return "findmyid";
+	}
+	
+	@RequestMapping(value = "/findidcheck",method = RequestMethod.POST)
+	public String login11(HttpServletRequest request,Model mo)
+	{
+		String name=request.getParameter("name");
+		String email=request.getParameter("email");
+		
+		LoginService ls=sqlSession.getMapper(LoginService.class);
+		LoginDTO findid=ls.findid(name,email);
+		mo.addAttribute("findid",findid);
+		return "confirmid";
+		
+	}
+	
+	@RequestMapping(value = "/findmypw")
+	public String login12()
+	{
+		
+		return "findmypw";
+	}
+	
+	@RequestMapping(value = "/findpwcheck",method = RequestMethod.POST)
+	public String login13(HttpServletRequest request,Model mo)
+	{
+		String id=request.getParameter("id");
+		String name=request.getParameter("name");
+		String email=request.getParameter("email");
+		LoginService ls=sqlSession.getMapper(LoginService.class);
+		LoginDTO findpw=ls.findpw(id,name,email);
+		mo.addAttribute("findpw",findpw);
+		
+		return "confirmpw";
+	}
+	
+	@RequestMapping(value = "/confirmpw",method = RequestMethod.POST)
+	public String login14(HttpServletRequest request,Model mo)
+	{	
+		String id=request.getParameter("id");
+		String pw=request.getParameter("pw");
+		LoginService ls=sqlSession.getMapper(LoginService.class);
+		ls.updatepw(id,pw);
+		
+		
+		return "redirect:/login";
+	}
+	
 }
