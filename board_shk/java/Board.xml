@@ -85,7 +85,7 @@
 	</insert>
 	
 	<select id="boardtotal" resultType="int">
-   		select count(*) from community
+   		select count(*) from community where step=0 and indent=0
 	</select>
 	
 	<select id="boardpage" resultType="com.mbc.team.board.BoardDTO">
@@ -133,15 +133,15 @@
 	</select>
 	
 	<select id="totalct" resultType="int">
-   		select count(*) from community where title like #{svalue}
+   		select count(*) from community where title like #{svalue} and step=0 and indent=0
 	</select>
 	
 	<select id="totalcc" resultType="int">
-   		select count(*) from community where ccontents like #{svalue}
+   		select count(*) from community where ccontents like #{svalue} and step=0 and indent=0
 	</select>
 	
 	<select id="totalcn" resultType="int">
-   		select count(*) from community where nickname like #{svalue}
+   		select count(*) from community where nickname like #{svalue} and step=0 and indent=0
 	</select>
 	
 	<update id="stepup">
@@ -168,5 +168,14 @@
 	<update id="boardupdate">
 		update community set tab=#{param3}, title=#{param4}, ccontents=#{param5}, cimage=#{param6} where cnum=#{param1} and nickname=#{param2} 
 	</update>
+	
+	<!-- 경기일정 -->
+	<insert id="iljunginput">
+		insert into iljung values(#{param1}, #{param2})
+	</insert>
+	
+	<select id="iljungout" resultType="com.mbc.team.board.IljungDTO">
+		select to_char(gamedate, 'yyyy-MM-dd') as gamedate, gameresult from iljung
+	</select>
 	
 </mapper>
