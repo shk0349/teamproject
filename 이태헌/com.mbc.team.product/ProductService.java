@@ -9,5 +9,9 @@ public interface ProductService  {
 
 	void inserta(String fname1, String cat1, String cat2, String product, int price, String fname2);
 
+	ProductDTO detail(int itemnum);
+
+	
+
 }
  
