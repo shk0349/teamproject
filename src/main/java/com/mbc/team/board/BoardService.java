@@ -1,6 +1,7 @@
 package com.mbc.team.board;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 
@@ -59,5 +60,8 @@ public interface BoardService {
 
 	BoardDTO boardupdateview(int cnum);
 	void boardupdate(int cnum, String nickname, String tag, String title, String ccontents, String cimagefn);
+
+	void iljunginput(String gamedate, String gameresult);
+	List<IljungDTO> iljungout();
 	
 }

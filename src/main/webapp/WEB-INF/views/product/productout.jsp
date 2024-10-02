@@ -18,16 +18,19 @@
 <th>상품명</th><th>가격</th><th>상세이미지</th>
 
 </tr>
-
 <c:forEach items="${list}" var="aa">
 <tr>
   <td>${aa.itemnum}</td>
-  <td><img alt="" src="./image/${aa.image1}" width="50px" height="50px"></td>
+  <td>
+    <a href="productdetail?itemnum=${aa.itemnum}">
+        <img src="./image/${aa.image1}" width="50" height="50" alt="Product Image">
+    </a>
+</td>
   <td>${aa.cat1}</td>
   <td>${aa.cat2}</td>
   <td>${aa.product}</td>
   <td>${aa.price}</td>
-  <td><img alt="" src="./image/${aa.dimage}" width="50px" height="50px"></td>
+  <td><img src="./image/${aa.dimage}" width="50px" height="50px"></td>
 </tr>
 </c:forEach>
 </table >

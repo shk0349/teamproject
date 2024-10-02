@@ -1,13 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!-- 상세페이지 답변 달면 게시판으로 출력되던 오류 수정. 상세페이지 하단 생성 -->
 <!DOCTYPE html>
 <html lang="ko">
+<!-- 고객센터 홈 생성 및 좌측 사이드바, 우측 사이드바(반응형,이동형) -->
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>고객센터 문의 게시판</title>
-    <style type="text/css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>고객센터</title>
+<style type="text/css">
         * {
             margin: 0;
             padding: 0;
@@ -207,7 +206,7 @@
             <div class="contact-info">
                 <h3>고객상담센터</h3>
                 <p>070-7777-7777</p>
-                <p>example@naver.com</p>
+                <p>안녕하세요@naver.com</p>
                 <p>운영 시간: 11:00 ~ 19:00 (연중무휴)</p>
             </div>
             <div class="account-info">
@@ -216,7 +215,8 @@
                 <p>행복은행 (예금주: 행복이)</p>
             </div>
         </aside>
-        <!-- 오른쪽 플로팅 메뉴 -->
+        
+         <!-- 오른쪽 플로팅 메뉴 -->
         <div id="floating-menu">
             <ul>
                 <li><a href="#">CART</a></li>
@@ -224,69 +224,38 @@
                 <li><a href="#">CREDIT CARD</a></li>
                 <li><a href="#">EMS</a></li>
             </ul>
-<!-- 
-            <div class="scroll-button" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">△</div>
-            <div class="scroll-button" onclick="window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'});">▽</div>
-     --></div>
+        </div>
 
         <!-- 메인 콘텐츠 -->
         <main class="main-content">
-            <h1>문의 게시판</h1>
-
-            <!-- 검색 바 -->
-            <form action="faqsearch" method="post" class="search-bar">
-                <select name="faqkey">
-                    <option value="title">제목</option>
-                    <option value="nickname">작성자</option>
-                </select>
-                <input type="text" name="faqvalue" placeholder="검색어를 입력하세요">
-                <button type="submit">검색</button>
-            </form>
-
-            <!-- 문의 리스트 테이블 -->
+            <h1>자주 묻는 질문</h1>
+            <div class="search-bar">
+                <input type="text" placeholder="검색어를 입력하세요">
+                <button>검색</button>
+            </div>
             <table class="faq-table">
-                <caption>문의 내역</caption>
+                <caption>BEST FAQ</caption>
                 <thead>
-                    <tr class="faq-small-title">
-                        <th width="60px">문의번호</th><th width="120px">TAB</th>
-                        <th width="350px">제목</th>
-                        <th width="120px">작성자</th><th>시간</th>
+                    <tr>
+                        <th>번호</th>
+                        <th>분류</th>
+                        <th>내용</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <c:forEach items="${list}" var="faq">
-                        <tr onclick="location.href='faqdetail?cnum=${faq.cnum}'" class="trlink">
-                            <td>${faq.cnum}</td>
-                            <td>${faq.tab}</td>
-                            <td style="text-align: left;">${faq.title}</td>
-                            <td>${faq.nickname}</td>
-                            <td>${faq.fdate}</td>
-                        </tr>
-                    </c:forEach>
+                    <tr>
+                        <td>12</td>
+                        <td>마일리지 적립</td>
+                        <td>후기 작성 포인트 지급 관련</td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>결제/배송</td>
+                        <td>배송중이라고 표시되었는데 배송 추적이 안돼요.</td>
+                    </tr>
+                    <!-- 추가 FAQ 항목들 -->
                 </tbody>
             </table>
-
-            <!-- 페이지 네비게이션 -->
-            <div class="pagination">
-                <c:if test="${paging.startPage != 1}">
-                    <a href="faqout?nowPage=${paging.startPage-1}&cntPerPage=${paging.cntPerPage}">이전</a>
-                </c:if>
-
-                <c:forEach begin="${paging.startPage}" end="${paging.endPage}" var="p">
-                    <c:choose>
-                        <c:when test="${p == paging.nowPage}">
-                            <span class="current">${p}</span>
-                        </c:when>
-                        <c:otherwise>
-                            <a href="faqout?nowPage=${p}&cntPerPage=${paging.cntPerPage}">${p}</a>
-                        </c:otherwise>
-                    </c:choose>
-                </c:forEach>
-
-                <c:if test="${paging.endPage != paging.lastPage}">
-                    <a href="faqout?nowPage=${paging.endPage+1}&cntPerPage=${paging.cntPerPage}">다음</a>
-                </c:if>
-            </div>
         </main>
     </div>
 </body>

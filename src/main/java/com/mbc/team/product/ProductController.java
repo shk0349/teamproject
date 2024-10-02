@@ -43,10 +43,10 @@ public class ProductController {
 	    String fname2 = mf2.getOriginalFilename();
 	    mf2.transferTo(new File(path+"//"+fname2));
 		ProductService ps = sqlSession.getMapper(ProductService.class);
-	    ps.inserta(fname1,cat1,cat2,product,price,fname2);
-	    
+	    ps.inserta(fname1,cat1,cat2,product,price,fname2);   
 		return "main";
 	  }
+	
 	@RequestMapping(value = "productout")
 	public String lte3(Model mo) {
 		ProductService ps = sqlSession.getMapper(ProductService.class);
@@ -54,4 +54,14 @@ public class ProductController {
 		mo.addAttribute("list" , list);
 		return "productout";
 	  }
+	
+	@RequestMapping(value = "productdetail" , method = RequestMethod.GET)
+	public String lte4(HttpServletRequest request , Model mo) { 
+		int itemnum = Integer.parseInt(request.getParameter("itemnum"));
+		ProductService ps = sqlSession.getMapper(ProductService.class);
+		ProductDTO dto = ps.detail(itemnum);
+		mo.addAttribute("dto" , dto);
+		return "productdetailview";
+		}
+	
 }

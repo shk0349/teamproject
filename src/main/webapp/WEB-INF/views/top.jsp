@@ -119,7 +119,7 @@ p {
 						<li><a href="myinfo"> 회원정보</a></li>
 						<li><a href="#"> 장바구니</a></li>
 						<li><a href="#"> 주문/배송조회</a></li>
-						<li><a href="faqout"> 고객센터</a></li>
+						<li><a href="faq_comunity"> 고객센터</a></li>
 					</c:when>
 
 					<c:when test="${adminloginstate==true}">
@@ -132,7 +132,7 @@ p {
 								<li><a href="productout">상품자료출력</a></li>
 							</ul></li>
 
-						<li><a href="#"><span class="glyphicon glyphicon-log-out"></span>
+						<li><a href="logout"><span class="glyphicon glyphicon-log-out"></span>
 								로그아웃</a></li>
 					</c:when>
 
@@ -141,7 +141,7 @@ p {
 						<li><a href="login"> 로그인</a></li>
 						<li><a href="#"> 장바구니</a></li>
 						<li><a href="#"> 주문/배송조회</a></li>
-						<li><a href="faqout"> 고객센터</a></li>
+						<li><a href="faq_comunity"> 고객센터</a></li>
 					</c:otherwise>
 				</c:choose>
 			</ul>
@@ -312,7 +312,7 @@ p {
 						<li><a href="gongjiboard">공지사항</a></li>
 						<li><a href="board">자유게시판</a></li>
 						<li><a href="sosickboard">야구소식</a></li>
-						<li><a href="iljungboard">경기일정</a></li>
+						<li><a href="iljung">경기일정</a></li>
 					</ul></li>
 
 			</ul>
