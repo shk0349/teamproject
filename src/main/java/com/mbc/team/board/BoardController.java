@@ -4,6 +4,9 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,13 +18,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 @Controller
 public class BoardController {
 
-	String savepath="C:\\Users\\jin\\git\\teamproject\\baseballshop_project\\src\\main\\webapp\\image";
+	String savepath="C://project//teamproject//baseballshop_project//src//main//webapp//image";
 	@Autowired
 	SqlSession sqlsession;
 	
@@ -343,5 +347,59 @@ public class BoardController {
 		prw.close();
 		return "redirect:/boarddetail?cnum=" + cnum;
 	}
+
+	@RequestMapping(value = "/iljung", method = RequestMethod.GET)
+	public String iljung() {
+		return "iljung";
+	}
 	
+	@RequestMapping(value = "/iljunginput", method = RequestMethod.GET)
+	public String iljunginput() {
+		return "iljunginput";
+	}
+	
+	@RequestMapping(value = "/iljungsave", method = RequestMethod.POST)
+	public String iljungsave(HttpServletRequest request) {
+		String gamedate=request.getParameter("gamedate");
+		String home=request.getParameter("home");
+		String away=request.getParameter("away");
+		int homescore=Integer.parseInt(request.getParameter("homescore"));
+		int awayscore=Integer.parseInt(request.getParameter("awayscore"));
+		String gamestate=request.getParameter("gamestate");
+		String gameresult="";
+		if(gamestate.equals("진행")) {
+			gameresult=home+" "+homescore+" : "+awayscore+" "+away;
+		}
+		else {
+			gameresult=home+" 취소 "+away;
+		}
+		BoardService bs=sqlsession.getMapper(BoardService.class);
+		bs.iljunginput(gamedate, gameresult);
+		return "iljung";
+	}
+	
+	@RequestMapping(value = "/events", method = RequestMethod.GET, produces = "application/json")
+	@ResponseBody
+	public List<Map<String, Object>> events() {
+	    BoardService bs = sqlsession.getMapper(BoardService.class);
+	    List<IljungDTO> list = bs.iljungout();
+
+	    if (list == null || list.isEmpty()) {
+	        System.out.println("데이터가 없습니다.");
+	    } else {
+	        System.out.println("데이터 있음: " + list.size() + "개의 일정");
+	    }
+
+	    List<Map<String, Object>> jsonList = new ArrayList<>();
+	    for (IljungDTO dto : list) {
+	        Map<String, Object> event = new HashMap<>();
+	        event.put("title", dto.getGameresult());
+	        event.put("start", dto.getGamedate()); // 날짜 형식 맞춰주기
+	        jsonList.add(event);
+	    }
+	    System.out.println("JSON 데이터: " + jsonList);
+	    return jsonList; // JSON 형식으로 반환
+	}
+
+
 }

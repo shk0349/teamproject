@@ -68,6 +68,21 @@
       <put-attribute name="body" value="/WEB-INF/views/board/boardupdateview.jsp"/>
    </definition>
 
+    <definition name="iljung" extends="baseLayout">
+      <put-attribute name="title" value="메인화면"/>
+      <put-attribute name="body" value="/WEB-INF/views/iljung/iljung.jsp"/>
+   </definition>
+
+    <definition name="iljunginput" extends="baseLayout">
+      <put-attribute name="title" value="메인화면"/>
+      <put-attribute name="body" value="/WEB-INF/views/iljung/iljunginput.jsp"/>
+   </definition>
+   
+    <definition name="/events" extends="baseLayout">
+      <put-attribute name="title" value="메인화면"/>
+      <put-attribute name="body" value="/WEB-INF/views/iljung/iljung.jsp"/>
+   </definition>
+
 </tiles-definitions>
 
 

@@ -12,5 +12,9 @@
   select * from product
 </select>
 
+<select id="detail" resultType="com.mbc.team.product.ProductDTO">
+  select itemnum , image1 , product , price , dimage from product where itemnum=#{param1}
+</select>
+
 </mapper>
 
